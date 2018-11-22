@@ -27,7 +27,7 @@ Alternatively, you can run the app directly without packaging it like so -
 ```bash
 mvn spring-boot:run
 ```
-**3. Create Dockerfile and paste the content below
+**3. Create Dockerfile and paste the content below**
 ```bash
 touch Dockerfile
 ```
