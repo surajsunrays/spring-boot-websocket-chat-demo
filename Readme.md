@@ -68,3 +68,11 @@ sudo docker run -d -p 5000:8080 spring-boot-websocket-chat-demo
 ```URL
 http://localhost:5000
 ```
+**7. DockerHub URL For The Image**
+```URL
+https://hub.docker.com/r/sunrays86/spring-boot-websocket-chat-demo/
+```
+#Or Use can also directly get the image . Use Below Image 
+```bash
+sunrays86/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
+```
