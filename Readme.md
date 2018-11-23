@@ -1,7 +1,5 @@
 ## Spring Boot WebSocket Chat Appplication
 
-You can checkout the live version of the application at https://spring-ws-chat.herokuapp.com/
-
 ## Requirements
 
 1. Java - 1.8.x
@@ -13,7 +11,7 @@ You can checkout the live version of the application at https://spring-ws-chat.h
 **1. Clone the application**
 
 ```bash
-git clone https://github.com/callicoder/spring-boot-websocket-chat-demo.git
+git clone https://github.com/surajsunrays/spring-boot-websocket-chat-demo.git
 ```
 
 **2. Build and run the app using maven**
@@ -29,9 +27,52 @@ Alternatively, you can run the app directly without packaging it like so -
 ```bash
 mvn spring-boot:run
 ```
+**3. Create Dockerfile and paste the content below**
+```bash
+touch Dockerfile
+```
 
-## Learn More
+```bash
+# Start with a base image containing Java runtime
+FROM openjdk:8-jdk-alpine
 
-You can find the tutorial for this application on my blog -
+# Add Maintainer Info
 
-https://www.callicoder.com/spring-boot-websocket-chat-example/
+MAINTAINER Suraj Ashok Bodade <suraj.bodade@zemosolabs.com>
+
+# Add a volume pointing to /tmp
+VOLUME /tmp
+
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
+
+# The application's jar file
+ARG JAR_FILE=target/websocket-demo-0.0.1-SNAPSHOT.jar
+
+# Add the application's jar to the container
+ADD ${JAR_FILE} websocket-demo.jar
+
+# Run the jar file 
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/websocket-demo.jar"]
+
+```
+**4. Create Docker Image for the project**
+```bash
+sudo docker image build -t spring-boot-websocket-chat-demo .
+```
+**5. Create and Run the container using above create IMAGE**
+```bash
+sudo docker run -d -p 5000:8080 spring-boot-websocket-chat-demo
+```
+**6. Check the output of application open browser and open URL**
+```URL
+http://localhost:5000
+```
+**7. DockerHub URL For The Image**
+```URL
+https://hub.docker.com/r/sunrays86/spring-boot-websocket-chat-demo/
+```
+#Or Use can also directly get the image . Use Below Image 
+```bash
+sunrays86/spring-boot-websocket-chat-demo:0.0.1-SNAPSHOT
+```
