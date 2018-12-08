@@ -10,6 +10,4 @@ public class WebsocketDemoApplication {
 		SpringApplication.run(WebsocketDemoApplication.class, args);
 	}
 }
-//This is sample line to test integration.
-//ohh no error is here, Now removing error.
 
