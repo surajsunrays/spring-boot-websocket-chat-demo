@@ -1,10 +1,6 @@
 pipeline{
     agent any
-
-    tools{
-        maven 'maven'
-        jdk 'java 8'
-    }
+    
     stages{
         //This is for Validating the maven project
         stage('Validating'){
