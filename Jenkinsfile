@@ -37,6 +37,22 @@ pipeline{
                 
             }
         }
+        stage('Docker:Image-Build'){
+            steps{
+                echo "Creating the docker image using Dockerfile"
+                //Docker image build and docker commands are here
+                //Trying to build the docker image Here
+                echo "We are creating the docker Image Here"
+                sh 'docker image build --name spring-boot-websocket .'
+                //
+            }
+        }
+        stage('Depolying'){
+            steps{
+                echo "Deploying the app using docker"
+                //sh 'docker run -d --name spring-boot-websocket -p 7070:8080 '
+            }
+        }
         
     }
     }
