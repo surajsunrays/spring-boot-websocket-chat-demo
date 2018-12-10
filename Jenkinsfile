@@ -43,14 +43,14 @@ pipeline{
                 //Docker image build and docker commands are here
                 //Trying to build the docker image Here
                 echo "We are creating the docker Image Here"
-                sh 'sudo docker image build -t spring-boot-websocket-chat-demo .'
+                sh 'docker image build -t spring-boot-websocket-chat-demo .'
                 //
             }
         }
         stage('Depolying'){
             steps{
                 echo "Deploying the app using docker"
-                sh 'sudo docker run -d -p 5000:8080 spring-boot-websocket-chat-demo'
+                sh 'docker run -d -p 5000:8080 spring-boot-websocket-chat-demo'
                 echo "Application is serving at localhost port 5000......."
             }
         }
