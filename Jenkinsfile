@@ -5,10 +5,8 @@ pipeline{
         //This is for Validating the maven project
         stage('Validating'){
             steps{
-                
-                  //  sh mvn clean validate
-                  echo "Validating code Here"
-                
+                echo "Validating code Here"
+                sh `mvn clean validate`
             }
 
         }
