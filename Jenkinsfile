@@ -13,27 +13,27 @@ pipeline{
         //This is for Compiling the maven project
         stage('Compiling'){
             steps{
-                
-                  //  sh mvn clean compile
-                  echo "Compiling code Here"
+                    echo "Compiling code Here"
+                    sh 'mvn clean compile'
+                  
                 
             }
         }
         //This is for Testing the maven project
         stage('Testing'){
             steps{
-                
-                 //   sh mvn clean test
-                 echo "Testing Code Here"
+                    echo "Testing Code Here"
+                    sh 'mvn clean test'
+                 
                 
             }
         }
         //This is for packaging the maven project
         stage('packaging'){
             steps{
-                
-                  //  sh mvn clean package
-                  echo "packaging code Here"
+                    echo "packaging code Here"
+                    sh 'mvn clean package'
+                  
                 
             }
         }
