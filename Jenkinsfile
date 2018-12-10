@@ -6,7 +6,7 @@ pipeline{
         stage('Validating'){
             steps{
                 echo "Validating code Here"
-                sh mvn clean validate
+                sh 'mvn clean validate'
             }
 
         }
