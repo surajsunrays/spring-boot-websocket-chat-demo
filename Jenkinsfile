@@ -35,7 +35,7 @@ pipeline{
         stage('packaging'){
             steps{
                 step{
-                    sh mvn clean package
+                  //  sh mvn clean package
                 }
             }
         }
