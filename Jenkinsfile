@@ -1,12 +1,13 @@
 pipeline{
     agent any
-    
+
     stages{
         //This is for Validating the maven project
         stage('Validating'){
             steps{
                 step{
-                    sh mvn clean validate
+                  //  sh mvn clean validate
+                  echo "Validating code Here"
                 }
             }
 
@@ -15,7 +16,8 @@ pipeline{
         stage('Compiling'){
             steps{
                 step{
-                    sh mvn clean compile
+                  //  sh mvn clean compile
+                  echo "Compiling code Here"
                 }
             }
         }
@@ -23,7 +25,8 @@ pipeline{
         stage('Testing'){
             steps{
                 step{
-                    sh mvn clean test
+                 //   sh mvn clean test
+                 echo "Testing Code Here"
                 }
             }
         }
@@ -32,6 +35,7 @@ pipeline{
             steps{
                 step{
                   //  sh mvn clean package
+                  echo "packaging code Here"
                 }
             }
         }
