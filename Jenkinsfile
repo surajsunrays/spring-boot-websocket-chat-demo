@@ -47,13 +47,33 @@ pipeline{
                 //
             }
         }
-        stage('Depolying'){
+    }
+        stages{
+        stage('Deploying-Check Running')
+        {
+            when
+            {
+                expression{
+                     $(docker inspect -f '{{.State.Running}}' spring-boot-websocket) = "true"
+                }
+            }
             steps{
-                echo "Deploying the app using docker"
-                sh 'docker run -d -p 5000:8080 spring-boot-websocket-chat-demo'
-                echo "Application is serving at localhost port 5000......."
+                echo "Container is already Running......"
             }
         }
+        stage('Deploying-Check Exited'){
+            when{
+                expression
+                {
+                    $(docker inspect -f '{{.State.Exited}}' spring-boot-websocket) = "true"
+                }
+                
+            }
+            steps{
+                echo "The container is exited......"
+            }
+        }
+        
         
     }
     }
