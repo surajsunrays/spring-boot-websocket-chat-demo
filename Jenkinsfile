@@ -53,9 +53,7 @@ pipeline{
         {
             when
             {
-                expression{
-                     docker inspect -f '{{.State.Running}}' spring-boot-websocket
-                }
+                    sh 'docker inspect -f '{{.State.Running}}' spring-boot-websocket'
             }
             steps{
                 echo "Container is already Running......"
@@ -63,16 +61,13 @@ pipeline{
         }
         stage('Deploying-Check Exited'){
             when{
-                expression
-                {
-                    docker inspect -f '{{.State.Exited}}' spring-boot-websocket
-                }
                 
-            }
+                    sh 'docker inspect -f '{{.State.Exited}}' spring-boot-websocket'
+                }
             steps{
                 echo "The container is exited......"
             }
-        }
+            }
     }
     }
 // This is sample change made to check branch               
