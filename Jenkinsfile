@@ -73,8 +73,6 @@ pipeline{
                 echo "The container is exited......"
             }
         }
-        
-        
     }
     }
 // This is sample change made to check branch               
