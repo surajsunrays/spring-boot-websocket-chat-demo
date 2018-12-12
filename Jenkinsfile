@@ -54,7 +54,7 @@ pipeline{
             when
             {
                 expression{
-                     $(docker inspect -f '{{.State.Running}}' spring-boot-websocket) = "true"
+                     docker inspect -f '{{.State.Running}}' spring-boot-websocket
                 }
             }
             steps{
@@ -65,7 +65,7 @@ pipeline{
             when{
                 expression
                 {
-                    $(docker inspect -f '{{.State.Exited}}' spring-boot-websocket) = "true"
+                    docker inspect -f '{{.State.Exited}}' spring-boot-websocket
                 }
                 
             }
