@@ -47,7 +47,7 @@ pipeline{
                 //
             }
         }
-    }
+    
        
         stage('Deploying-Check Running')
         {
@@ -73,6 +73,6 @@ pipeline{
                 echo "The container is exited......"
             }
         }
-    
+    }
     }
 // This is sample change made to check branch               
