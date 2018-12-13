@@ -51,8 +51,7 @@ pipeline{
        
         stage('Deploy to Docker')
         {
-            steps
-            {
+            
                 script
                 {
                     sh 'RunningContainer=`docker ps -q -f name=spring-boot-websocket`'
@@ -64,12 +63,12 @@ pipeline{
                         return RunningContainer.isEmpty()
                     }
                 }
-                step
+                steps
                 {
                     echo "No such Container Running is returned......."
                     //docker.image('spring-boot-websocket-chat-demo').run("--name spring-boot-websocket -p 5000:8080")
                 }
-            }
+            
         }
     }
     }
