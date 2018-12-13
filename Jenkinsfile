@@ -53,9 +53,9 @@ pipeline{
         {
             steps
             {
-                environment
+                script
                 {
-                    RunningContainer = sh(script: `docker ps -q -f name=spring-boot-websocket`, returnStdout: true).trim()
+                    sh 'RunningContainer=`docker ps -q -f name=spring-boot-websocket`'
                 }
                 when
                 {
