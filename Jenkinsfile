@@ -56,7 +56,7 @@ pipeline{
                 script
                 {
                     //Checking the already running container exists or not
-                    if [ $(docker inspect -f '{{.State.Running}}' spring-boot-websocket) = "true" ]; then 
+                    if ( $(docker inspect -f '{{.State.Running}}' spring-boot-websocket) = "true" ); then 
                     echo "The Container is already running " 
                     echo "Now Stopping the container to Create the latest" 
                     sudo docker container stop spring-boot-websocket
@@ -67,7 +67,7 @@ pipeline{
                     echo "---- Container running and listening at port 7070--------"
                     echo "-----------OPERATION COMPLETE----"; 
                     else echo "No Such Container Running"
-                    if [ $(docker inspect -f '{{.State.Exited}}' spring-boot-websocket) = "true" ];then
+                    if ( $(docker inspect -f '{{.State.Exited}}' spring-boot-websocket) = "true" );then
                     echo "------- Found One Exited Container -----------"
                     sudo docker container rm -f spring-boot-websocket;
                     echo "----- Exited container removed------"; 
