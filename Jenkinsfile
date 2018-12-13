@@ -53,7 +53,7 @@ pipeline{
         {
             steps
             {
-                sh 'shdockertest.sh'
+                sh 'sh dockertest.sh'
             }
         }
     }
