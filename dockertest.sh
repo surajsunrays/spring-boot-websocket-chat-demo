@@ -13,14 +13,14 @@ then
     then
         echo "Also No any Exited Container"
         #Launching the new Container Here
-        docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app
+        docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-websocket-chat-demo
     else
         echo "--------Found the Exited Container-----------"
         echo "Now Cleaning the Existing container resources......";
         docker container rm -f spring-boot-websocket
         echo "=--   Now Launching the New Container -----=";
         #Starting the new Container Here
-        docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app
+        docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-websocket-chat-demo
     fi
 elif [ "$ExitedContainer" == "" ]
 then
