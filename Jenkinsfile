@@ -51,11 +51,15 @@ pipeline{
        
         stage('Deploy to Docker')
         {
-            
+            steps
+            {
                 script
                 {
                     sh 'RunningContainer=`docker ps -q -f name=spring-boot-websocket`'
                 }
+            }
+            
+                
                 when
                 {
                     expression
