@@ -2,28 +2,28 @@
 #This script is used to check the various states of docker container
 
 #Checking the already runnung container
-if [ $(docker inspect -f '{{.State.Running}}' spring-boot-websocket)="false" ]
+RunningContainer=`docker ps -q -f name=spring-boot-websocket`
+ExitedContainer=`docker ps -q -f name=spring-boot-websocket -a`
+echo "Showing the Running Container :$RunningContainer"
+echo "Showing the Stopped Container :$ExitedContainer"
+if [ "$RunningContainer" == "" ]
 then
-    echo "-----Container Running-------------";
-    echo "-----Stopping the container---------";
-    docker container stop spring-boot-websocket;
-    echo "Now Cleaning the Existing container resources......";
-    docker container rm -f spring-boot-websocket
-    echo "=--   Now Launching the New Container -----=";
-    #Starting the new Container Here
-    docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app;
-    
-elif [ $(docker inspect -f '{{.State.Exited}}' spring-boot-websocket)="false" ]
+    echo "-------No any Running Container Found------"
+    if [ "$ExitedContainer" == "" ]
+    then
+        echo "Also No any Exited Container"
+        #Launching the new Container Here
+        docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app
+    else
+        echo "--------Found the Exited Container-----------"
+        echo "Now Cleaning the Existing container resources......";
+        docker container rm -f spring-boot-websocket
+        echo "=--   Now Launching the New Container -----=";
+        #Starting the new Container Here
+        docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app
+    fi
+elif [ "$ExitedContainer" == "" ]
 then
-    echo "Container found in exited state";
-    echo "Now Cleaning the Existing container resources......";
-    docker container rm -f spring-boot-websocket
-    echo "=--   Now Launching the New Container -----=";
-    #Starting the new Container Here
-    docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app;
-else
-    #Starting the new Container Here
-    echo "------------Creating the new Container--------------"
-    docker run -d --name spring-boot-websocket -p 7070:8080 spring-boot-app;
+        echo "----- No any Exited Container Found -------"
 fi
 echo "--**-----**------ Operation Complete------**-----**--------";
